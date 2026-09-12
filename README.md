@@ -32,7 +32,7 @@
 
 ---
 
-## 🌟 1. Giới Thiệu Tổng Quan
+##  1. Giới Thiệu Tổng Quan
 
 Trong bối cảnh năng lượng điện ngày càng đắt đỏ và các vụ hỏa hoạn do quá tải điện, chập điện trong hộ gia đình ngày càng diễn biến phức tạp, các ổ cắm điện truyền thống hoàn toàn bị động và không có cơ chế bảo vệ thông minh.
 
@@ -45,45 +45,45 @@ Dự án **IoT Smart Socket** cung cấp giải pháp ổ cắm thông minh toà
 
 ---
 
-## 🚀 2. Các Tính Năng Nổi Bật
+##  2. Các Tính Năng Nổi Bật
 
-- ⚡ **Đo Dòng Hiệu Dụng RMS & Công Suất Tức Thời**: Thuật toán lấy mẫu 1000 mẫu/chu kỳ trên ADC 12-bit, tự động hiệu chuẩn điểm không tĩnh ($V_{CC}/2$) và lọc nhiễu nền tĩnh ($I_{threshold} = 0.18\text{A}$).
-- 📱 **Điều Khiển Đa Nền Tảng**: Điều khiển Bật/Tắt từ xa qua cả Web Dashboard (trình duyệt máy tính) và Ứng dụng di động Flutter (Android/iOS).
-- 📶 **Cấp Phát Mạng Qua BLE (Zero-touch Provisioning)**: Không cần màn hình/bàn phím, quét và nạp SSID/Password từ smartphone với mã bảo mật **Proof of Possession (PoP)** `12345678_DUC`.
-- 🔁 **Khôi Phục Cài Đặt Gốc (Factory Reset)**: Quét nút bấm BOOT vật lý trên bo mạch, giữ 5 giây tự động xóa sạch phân vùng NVS Flash và mở lại chế độ BLE Provisioning.
-- 🧵 **Kiến Trúc FreeRTOS Đa Lõi Đối Xứng (SMP)**:
+-  **Đo Dòng Hiệu Dụng RMS & Công Suất Tức Thời**: Thuật toán lấy mẫu 1000 mẫu/chu kỳ trên ADC 12-bit, tự động hiệu chuẩn điểm không tĩnh ($V_{CC}/2$) và lọc nhiễu nền tĩnh ($I_{threshold} = 0.18\text{A}$).
+-  **Điều Khiển Đa Nền Tảng**: Điều khiển Bật/Tắt từ xa qua cả Web Dashboard (trình duyệt máy tính) và Ứng dụng di động Flutter (Android/iOS).
+-  **Cấp Phát Mạng Qua BLE (Zero-touch Provisioning)**: Không cần màn hình/bàn phím, quét và nạp SSID/Password từ smartphone với mã bảo mật **Proof of Possession (PoP)** `12345678_DUC`.
+-  **Khôi Phục Cài Đặt Gốc (Factory Reset)**: Quét nút bấm BOOT vật lý trên bo mạch, giữ 5 giây tự động xóa sạch phân vùng NVS Flash và mở lại chế độ BLE Provisioning.
+-  **Kiến Trúc FreeRTOS Đa Lõi Đối Xứng (SMP)**:
   - **Core 0**: Quản lý toàn bộ ngăn xếp mạng (Wi-Fi, BLE, MQTT Client).
   - **Core 1**: Chuyên trách đọc cảm biến ADC thời gian thực và đóng cắt rơ-le qua hàng đợi an toàn luồng `xQueue`.
-- 📊 **Giám Sát Trực Quan Thời Gian Thực**: Đồ thị trực quan hoá lượng điện năng tiêu thụ, lưu trữ lịch sử vào PostgreSQL và cập nhật liên tục qua WebSocket.
+-  **Giám Sát Trực Quan Thời Gian Thực**: Đồ thị trực quan hoá lượng điện năng tiêu thụ, lưu trữ lịch sử vào PostgreSQL và cập nhật liên tục qua WebSocket.
 
 ---
 
-## 🏗️ 3. Kiến Trúc Hệ Thống (4 Tầng)
+##  3. Kiến Trúc Hệ Thống (4 Tầng)
 
 ```mermaid
 graph TD
     subgraph Tầng Ứng Dụng (Application Layer)
-        WEB["💻 Web Dashboard (ReactJS / Recharts)"]
-        APP["📱 Mobile App (Flutter / Dart)"]
+        WEB[" Web Dashboard (ReactJS / Recharts)"]
+        APP[" Mobile App (Flutter / Dart)"]
     end
 
     subgraph Tầng Dịch Vụ & Hạ Tầng (Service & Cloud Layer)
-        SPRING["☕ Spring Boot 3.2 Backend (REST API / WebSocket)"]
-        MQTT["📡 Mosquitto MQTT Broker (Port 1883)"]
-        DB[("🐘 PostgreSQL 18 Database (lab208)")]
+        SPRING[" Spring Boot 3.2 Backend (REST API / WebSocket)"]
+        MQTT[" Mosquitto MQTT Broker (Port 1883)"]
+        DB[(" PostgreSQL 18 Database (lab208)")]
     end
 
     subgraph Tầng Mạng (Network Layer)
-        WIFI["📶 Wi-Fi 802.11 b/g/n (2.4GHz)"]
-        BLE["🔵 Bluetooth Low Energy (Provisioning)"]
+        WIFI[" Wi-Fi 802.11 b/g/n (2.4GHz)"]
+        BLE[" Bluetooth Low Energy (Provisioning)"]
     end
 
     subgraph Tầng Thiết Bị Nhúng (Device Layer)
-        ESP["🧠 ESP32-S3-N16R8 (Dual-Core 240MHz)"]
-        SENSOR["⚡ ACS712-30A Current Sensor"]
-        RELAY["🔌 5V Songle Relay Module"]
-        POWER["🔋 220V AC to 5V DC Isolated Step-Down"]
-        LOAD["💡 Tải Tiêu Thụ (Đèn, Quạt, Ấm Siêu Tốc 220V)"]
+        ESP[" ESP32-S3-N16R8 (Dual-Core 240MHz)"]
+        SENSOR[" ACS712-30A Current Sensor"]
+        RELAY[" 5V Songle Relay Module"]
+        POWER[" 220V AC to 5V DC Isolated Step-Down"]
+        LOAD[" Tải Tiêu Thụ (Đèn, Quạt, Ấm Siêu Tốc 220V)"]
     end
 
     APP -. Cấu hình Wi-Fi (PoP) .-> BLE -. Nhận SSID/Pass .-> ESP
@@ -142,7 +142,7 @@ graph TD
 
 ---
 
-## 💻 5. Thiết Kế Firmware Nhúng (ESP-IDF & FreeRTOS SMP)
+##  5. Thiết Kế Firmware Nhúng (ESP-IDF & FreeRTOS SMP)
 
 Firmware được viết bằng ngôn ngữ **C** thuần trên nền tảng **ESP-IDF v5.3.1**, quản trị và biên dịch qua **PlatformIO**.
 
@@ -178,7 +178,7 @@ Trong đó:
 
 ---
 
-## 🗄️ 6. Hạ Tầng Backend & Cơ Sở Dữ Liệu
+##  6. Hạ Tầng Backend & Cơ Sở Dữ Liệu
 
 ### 6.1. Cấu trúc bảng cơ sở dữ liệu PostgreSQL
 
@@ -229,7 +229,7 @@ CREATE TABLE sensor_data (
 
 ---
 
-## 🖥️ 7. Giao Diện Web Dashboard & Ứng Dụng Di Động
+##  7. Giao Diện Web Dashboard & Ứng Dụng Di Động
 
 ### 7.1. Web Dashboard (React 18)
 - Phát triển trên nền tảng **ReactJS**, tích hợp thư viện biểu đồ **Recharts** và giao diện hiện đại phong cách Glassmorphism.
@@ -244,7 +244,7 @@ CREATE TABLE sensor_data (
   - Màn hình **Profile**
 ---
 
-## 📊 8. Kết Quả Thực Nghiệm & Đánh Giá Sai Số
+##  8. Kết Quả Thực Nghiệm & Đánh Giá Sai Số
 
 Hệ thống đã trải qua quá trình đo kiểm đối chứng thực tế với **Đồng hồ vạn năng kỹ thuật số (VOM chuẩn)** trên 6 cấp tải gia dụng khác nhau:
 
@@ -258,16 +258,16 @@ Hệ thống đã trải qua quá trình đo kiểm đối chứng thực tế v
 | **Bàn là hơi nước** | 2200 W | 10.000 | 9.720 | 2138.4 | **2.8 %** |
 
 ### Đánh giá định lượng:
-- 🎯 **Sai số trung bình toàn dải**: **3.1%** (nằm trong tiêu chuẩn cho phép của thiết bị đo lường dân dụng < 5%).
-- ⏱️ **Thời gian đáp ứng điều khiển**: **< 200 ms** từ khi bấm nút trên ứng dụng đến khi tiếp điểm rơ-le nhảy cơ học.
-- 💾 **Tối ưu tài nguyên vi điều khiển**:
+-  **Sai số trung bình toàn dải**: **3.1%** (nằm trong tiêu chuẩn cho phép của thiết bị đo lường dân dụng < 5%).
+-  **Thời gian đáp ứng điều khiển**: **< 200 ms** từ khi bấm nút trên ứng dụng đến khi tiếp điểm rơ-le nhảy cơ học.
+-  **Tối ưu tài nguyên vi điều khiển**:
   - **RAM nội (SRAM)**: Chiếm $45.5\text{ KB} / 327.6\text{ KB}$ (**13.9%**).
   - **Flash chương trình**: Chiếm $1.2\text{ MB} / 2.0\text{ MB}$ (**57.3%** phân vùng app).
   - **PSRAM ngoài 8MB**: Hoàn toàn để trống dành cho các mô hình AI/ML tại biên.
 
 ---
 
-## 📂 9. Cấu Trúc Thư Mục Dự Án
+##  9. Cấu Trúc Thư Mục Dự Án
 
 ```
 DOAN_IOT_SmartSocket/
@@ -311,7 +311,7 @@ DOAN_IOT_SmartSocket/
 
 ---
 
-## 🛠️ 10. Hướng Dẫn Cài Đặt & Chạy Thử Nghiệm
+##  10. Hướng Dẫn Cài Đặt & Chạy Thử Nghiệm
 
 ### Yêu cầu môi trường tiên quyết:
 - **Hệ điều hành**: Windows 10/11 (hoặc Linux/macOS).
@@ -368,24 +368,24 @@ flutter run
 
 ---
 
-## 🔮 11. Hướng Phát Triển Tương Lai
+##  11. Hướng Phát Triển Tương Lai
 
-1. 🧠 **Ứng Dụng Học Máy Tại Biên (TinyML / Edge AI - NIALM)**:
+1.  **Ứng Dụng Học Máy Tại Biên (TinyML / Edge AI - NIALM)**:
    - Tận dụng dung lượng khủng **8MB Octal PSRAM** và tập lệnh xử lý tín hiệu **Vector Instructions (PIE)** của ESP32-S3 để thu thập chuỗi thời gian sóng dòng điện độ phân giải cao.
    - Chạy thuật toán biến đổi Fourier nhanh (FFT) và mạng nơ-ron tích chập (1D-CNN) trực tiếp trên chip để **tự động nhận dạng loại thiết bị đang cắm vào ổ cắm** (quạt, lò vi sóng, tủ lạnh, ấm nước...) qua đặc trưng sóng hài (công nghệ Non-Intrusive Appliance Load Monitoring).
-2. 🎙️ **Tích Hợp Điều Khiển Bằng Giọng Nói Tiếng Việt (Voice Control)**:
+2.  **Tích Hợp Điều Khiển Bằng Giọng Nói Tiếng Việt (Voice Control)**:
    - Tích hợp Speech-to-Text (Google Speech Engine / Whisper on-device) vào ứng dụng Flutter.
    - Nhận diện các khẩu lệnh rảnh tay tiếng Việt: *"Bật ổ cắm"*, *"Tắt quạt"*, *"Ngắt điện"* và bắn lệnh MQTT trực tiếp xuống vi điều khiển.
-3. 🛡️ **Tích Hợp Đo Đa Thông Số & Bảo Vệ Quá Dòng Chủ Động**:
+3.  **Tích Hợp Đo Đa Thông Số & Bảo Vệ Quá Dòng Chủ Động**:
    - Nâng cấp sử dụng IC đo chuyên dụng (PZEM-004T / BL0937) để đo thêm điện áp thực tế ($U_{RMS}$), hệ số công suất ($\cos\varphi$) và điện năng tiêu thụ tích lũy (kWh).
    - Tự động ngắt rơ-le trong thời gian dưới $50\text{ms}$ khi phát hiện dòng điện vượt ngưỡng cài đặt (bảo vệ quá dòng và chống rò điện).
 
 ---
 
-## 👨‍💻 12. Bản Quyền & Liên Hệ
+##  12. Bản Quyền & Liên Hệ
 
 - **Tác giả**: **Nguyễn Tuấn Đức**
 - **Email liên hệ**: [nguyentuanduchn2k4@gmail.com](mailto:nguyentuanduchn2k4@gmail.com)
 - **Đồ án môn học / Đồ án tốt nghiệp**: Khoa Công nghệ Thông tin
 ---
-<p align="center">⭐ Nếu dự án này hữu ích với bạn, hãy dành tặng cho kho lưu trữ một ngôi sao (Star) trên GitHub! ⭐</p>
+<p align="center"> Nếu dự án này hữu ích với bạn, hãy dành tặng cho kho lưu trữ một ngôi sao (Star) trên GitHub! </p>

@@ -8,7 +8,6 @@
   <img src="https://img.shields.io/badge/Database-PostgreSQL%2018-blue?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/Web-React%2018-61DAFB?style=for-the-badge&logo=react" alt="React" />
   <img src="https://img.shields.io/badge/Mobile-Flutter%203-02569B?style=for-the-badge&logo=flutter" alt="Flutter" />
-  <img src="https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge" alt="License" />
 </p>
 
 > **Đồ án**: "THIẾT KẾ VÀ CHẾ TẠO Ổ ĐIỆN THÔNG MINH GIÁM SÁT TIÊU THỤ ĐIỆN NĂNG VÀ ĐIỀU KHIỂN TỪ XA ỨNG DỤNG CÔNG NGHỆ IOT TRÊN NỀN TẢNG VI ĐIỀU KHIỂN ESP32-S3"  

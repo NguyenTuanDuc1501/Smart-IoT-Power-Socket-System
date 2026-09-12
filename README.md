@@ -181,7 +181,7 @@ Trong đó:
 
 ## 🗄️ 6. Hạ Tầng Backend & Cơ Sở Dữ Liệu
 
-### 6.1. Cấu trúc bảng cơ sở dữ liệu PostgreSQL (Database: `lab208`)
+### 6.1. Cấu trúc bảng cơ sở dữ liệu PostgreSQL
 
 ```sql
 -- Bảng quản lý thiết bị
@@ -242,8 +242,7 @@ CREATE TABLE sensor_data (
 - Kết nối trực tiếp qua thư viện `mqtt_client` tới broker Mosquitto:
   - Màn hình **MQTT Relay Screen**: Nút gạt Bật/Tắt to bản, hiển thị trạng thái kết nối MQTT.
   - Màn hình **Dashboard**: Đọc trực tiếp dòng điện (A) và công suất (W) thời gian thực.
-  - Màn hình **Profile**: Đã cá nhân hóa thông tin tác giả **Nguyễn Tuấn Đức** (`nguyentuanduchn2k4@gmail.com`).
-
+  - Màn hình **Profile**
 ---
 
 ## 📊 8. Kết Quả Thực Nghiệm & Đánh Giá Sai Số
@@ -389,7 +388,5 @@ flutter run
 - **Tác giả**: **Nguyễn Tuấn Đức**
 - **Email liên hệ**: [nguyentuanduchn2k4@gmail.com](mailto:nguyentuanduchn2k4@gmail.com)
 - **Đồ án môn học / Đồ án tốt nghiệp**: Khoa Công nghệ Thông tin
-- **Giấy phép (License)**: Dự án phát hành theo giấy phép mã nguồn mở [MIT License](LICENSE).
-
 ---
 <p align="center">⭐ Nếu dự án này hữu ích với bạn, hãy dành tặng cho kho lưu trữ một ngôi sao (Star) trên GitHub! ⭐</p>

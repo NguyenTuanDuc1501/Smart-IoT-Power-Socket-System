@@ -16,7 +16,7 @@
 
 ---
 
-## 📑 Mục Lục
+##  Mục Lục
 1. [Giới Thiệu Tổng Quan](#-1-giới-thiệu-tổng-quan)
 2. [Các Tính Năng Nổi Bật](#-2-các-tính-năng-nổi-bật)
 3. [Kiến Trúc Hệ Thống (4 Tầng)](#-3-kiến-trúc-hệ-thống-4-tầng)
@@ -99,7 +99,7 @@ graph TD
 
 ---
 
-## 🔌 4. Phần Cứng & Sơ Đồ Đấu Nối 220V An Toàn
+##  4. Phần Cứng & Sơ Đồ Đấu Nối 220V An Toàn
 
 ### 4.1. Thông số kỹ thuật phần cứng
 

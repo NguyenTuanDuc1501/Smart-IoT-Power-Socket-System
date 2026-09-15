@@ -398,7 +398,6 @@ flutter run
 - **Tác giả**: **Nguyễn Tuấn Đức**
 - **Email liên hệ**: [nguyentuanduchn2k4@gmail.com](mailto:nguyentuanduchn2k4@gmail.com)
 - **Đồ án môn học / Đồ án tốt nghiệp**: Khoa Công nghệ Thông tin
-- **Giấy phép (License)**: Dự án phát hành theo giấy phép mã nguồn mở [MIT License](LICENSE).
 
 ---
 <p align="center"> Nếu dự án này hữu ích với bạn, hãy dành tặng cho kho lưu trữ một ngôi sao (Star) trên GitHub! </p>

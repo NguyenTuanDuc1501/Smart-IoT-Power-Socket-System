@@ -61,40 +61,50 @@ Dự án **IoT Smart Socket** cung cấp giải pháp ổ cắm thông minh toà
 ##  3. Kiến Trúc Hệ Thống (4 Tầng)
 
 ```mermaid
-graph TD
-    subgraph Tầng Ứng Dụng (Application Layer)
-        WEB[" Web Dashboard (ReactJS / Recharts)"]
-        APP[" Mobile App (Flutter / Dart)"]
-    end
+flowchart TD
+    %% Định nghĩa phong cách giao diện màu tím thanh lịch (Chuẩn như ảnh mẫu)
+    classDef default fill:#EDE7F6,stroke:#7E57C2,stroke-width:1.5px,color:#000000;
+    classDef future fill:#F5F5F5,stroke:#9E9E9E,stroke-width:1.5px,stroke-dasharray: 4 4,color:#424242;
 
-    subgraph Tầng Dịch Vụ & Hạ Tầng (Service & Cloud Layer)
-        SPRING[" Spring Boot 3.2 Backend (REST API / WebSocket)"]
-        MQTT[" Mosquitto MQTT Broker (Port 1883)"]
-        DB[(" PostgreSQL 18 Database (lab208)")]
-    end
+    %% Tầng 1: Giao diện người dùng
+    APP["Điện thoại: App Flutter điều khiển & cấu hình"]
+    WEB["Máy tính: Web Dashboard ReactJS giám sát"]
+    VOICE["Trợ lý nhận diện giọng nói trong tương lai"]
 
-    subgraph Tầng Mạng (Network Layer)
-        WIFI[" Wi-Fi 802.11 b/g/n (2.4GHz)"]
-        BLE[" Bluetooth Low Energy (Provisioning)"]
-    end
+    %% Tầng 2: Máy chủ & Điều phối truyền thông
+    BACKEND["Spring Boot 3.2: REST API & Cơ sở dữ liệu PostgreSQL"]
+    MQTT["Mosquitto MQTT Broker: Cổng 1883 điều phối bản tin"]
 
-    subgraph Tầng Thiết Bị Nhúng (Device Layer)
-        ESP[" ESP32-S3-N16R8 (Dual-Core 240MHz)"]
-        SENSOR[" ACS712-30A Current Sensor"]
-        RELAY[" 5V Songle Relay Module"]
-        POWER[" 220V AC to 5V DC Isolated Step-Down"]
-        LOAD[" Tải Tiêu Thụ (Đèn, Quạt, Ấm Siêu Tốc 220V)"]
-    end
+    %% Tầng 3: Vi điều khiển trung tâm ESP32-S3 (Phân bổ đa lõi)
+    ESP_NET["ESP32-S3 Core 0: Quản lý Wi-Fi, BLE & MQTT Client"]
+    ESP_CORE["ESP32-S3 Core 1: Đọc ADC, tính RMS & điều khiển rơ-le"]
 
-    APP -. Cấu hình Wi-Fi (PoP) .-> BLE -. Nhận SSID/Pass .-> ESP
-    ESP -- Telemetry (JSON) --> WIFI --> MQTT
-    MQTT -- Nhận telemetry --> SPRING --> DB
-    SPRING -- REST / WebSocket --> WEB
-    APP -- Lệnh điều khiển trực tiếp --> MQTT
-    WEB -- Lệnh điều khiển qua REST API --> SPRING --> MQTT
-    MQTT -- Gửi lệnh Bật/Tắt --> WIFI --> ESP
-    ESP -- GPIO 5 --> RELAY --> LOAD
-    LOAD -- Dòng AC --> SENSOR -- GPIO 4 (ADC) --> ESP
+    %% Tầng 4: Cơ cấu chấp hành, Tải tiêu thụ & Cảm biến
+    RELAY["Module Rơ-le Songle 5V (Tiếp điểm NO Fail-Safe)"]
+    LOAD["Ổ cắm tải tiêu thụ 220V AC (Quạt, Đèn, Ấm nước)"]
+    ACS712["Cảm biến dòng hiệu ứng Hall ACS712-30A"]
+    POWER["Bo nguồn AC-DC 5V cách ly (Nuôi hệ vi điều khiển)"]
+
+    %% Liên kết luồng dữ liệu và tín hiệu
+    VOICE -.-> |Lệnh điều khiển giọng nói| APP
+    APP <--> |Wi-Fi: MQTT topic home/c3/led & status| MQTT
+    APP -.-> |Bluetooth Low Energy: Mã PoP 12345678_DUC| ESP_NET
+
+    WEB <--> |HTTP REST API & WebSocket đồng bộ| BACKEND
+    BACKEND <--> |MQTT Client: Gửi lệnh & lưu dữ liệu cảm biến| MQTT
+
+    MQTT <--> |Wi-Fi TCP/IP: Bản tin JSON telemetry & lệnh| ESP_NET
+    POWER --> |Cáp USB Type-C: Nguồn 5V ổn định| ESP_NET
+
+    ESP_NET <--> |Hàng đợi FreeRTOS xQueue & Sự kiện liên lõi| ESP_CORE
+
+    ESP_CORE --> |GPIO 5: Lệnh kích mức 1 / 0| RELAY
+    RELAY --> |Tiếp điểm COM - NO đóng/ngắt mạch Pha L| LOAD
+    LOAD --> |Dòng điện xoay chiều AC 220V| ACS712
+    ACS712 --> |GPIO 4 ADC1_CH3: Tín hiệu điện áp 1000 mẫu/kỳ| ESP_CORE
+
+    %% Gán class cho node tương lai
+    class VOICE future;
 ```
 
 ---

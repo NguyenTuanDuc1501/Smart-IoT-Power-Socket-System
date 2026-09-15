@@ -8,7 +8,6 @@
   <img src="https://img.shields.io/badge/Database-PostgreSQL%2018-blue?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/Web-React%2018-61DAFB?style=for-the-badge&logo=react" alt="React" />
   <img src="https://img.shields.io/badge/Mobile-Flutter%203-02569B?style=for-the-badge&logo=flutter" alt="Flutter" />
-  <img src="https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge" alt="License" />
 </p>
 
 > **Đồ án**: "THIẾT KẾ VÀ CHẾ TẠO Ổ ĐIỆN THÔNG MINH GIÁM SÁT TIÊU THỤ ĐIỆN NĂNG VÀ ĐIỀU KHIỂN TỪ XA ỨNG DỤNG CÔNG NGHỆ IOT TRÊN NỀN TẢNG VI ĐIỀU KHIỂN ESP32-S3"  
@@ -191,7 +190,7 @@ Trong đó:
 
 ##  6. Hạ Tầng Backend & Cơ Sở Dữ Liệu
 
-### 6.1. Cấu trúc bảng cơ sở dữ liệu PostgreSQL (Database: `lab208`)
+### 6.1. Cấu trúc bảng cơ sở dữ liệu PostgreSQL
 
 ```sql
 -- Bảng quản lý thiết bị
@@ -296,7 +295,7 @@ DOAN_IOT_SmartSocket/
 │   │   ├── repository/             # Spring Data JPA Repositories
 │   │   └── service/                # MQTT Inbound/Outbound integration services
 │   ├── src/main/resources/
-│   │   └── application.properties  # Cấu hình PostgreSQL (lab208) và MQTT Broker (1883)
+│   │   └── application.properties  # Cấu hình PostgreSQL và MQTT Broker (1883)
 │   └── mvnw.cmd                    # Maven Wrapper
 ├── web/                            # Web Dashboard giám sát (ReactJS 18)
 │   ├── src/
@@ -339,7 +338,7 @@ DOAN_IOT_SmartSocket/
    ```
 2. **PostgreSQL**: Tạo database tên `lab208` với tài khoản `postgres / 123456`:
    ```sql
-   CREATE DATABASE lab208;
+   CREATE DATABASE ;
    ```
 
 ### Bước 2: Biên dịch và nạp Firmware lên ESP32-S3
